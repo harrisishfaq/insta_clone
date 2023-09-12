@@ -1,0 +1,47 @@
+<%= form_with(model: setting) do |form| %>
+  <% if setting.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+
+      <ul>
+        <% setting.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :public, style: "display: block" %>
+    <%= form.check_box :public %>
+  </div>
+
+  <div>
+    <%= form.label :someone_can_comment_on_post, style: "display: block" %>
+    <%= form.check_box :someone_can_comment_on_post %>
+  </div>
+
+  <div>
+    <%= form.label :someone_can_search_me, style: "display: block" %>
+    <%= form.check_box :someone_can_search_me %>
+  </div>
+
+  <div>
+    <%= form.label :someone_can_mention_me, style: "display: block" %>
+    <%= form.check_box :someone_can_mention_me %>
+  </div>
+
+  <div>
+    <%= form.label :account_status, style: "display: block" %>
+    <%= form.check_box :account_status %>
+  </div>
+
+  <div>
+    <%= form.label :show_me_in_suggestions, style: "display: block" %>
+    <%= form.check_box :show_me_in_suggestions %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

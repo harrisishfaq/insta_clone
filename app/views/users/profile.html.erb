@@ -1,0 +1,7 @@
+<h3>Update Profile</h3>
+<%= form_for(current_user , url: update_user_profile_path) do |u| %>
+<p>
+    Email: <%= u.email_field :email %>
+</p>
+
+<% end %>

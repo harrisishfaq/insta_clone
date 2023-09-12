@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  public: false
+  someone_can_comment_on_post: false
+  someone_can_search_me: false
+  someone_can_mention_me: false
+  account_status: false
+  show_me_in_suggestions: false
+
+two:
+  public: false
+  someone_can_comment_on_post: false
+  someone_can_search_me: false
+  someone_can_mention_me: false
+  account_status: false
+  show_me_in_suggestions: false

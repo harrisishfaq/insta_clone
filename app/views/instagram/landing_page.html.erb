@@ -1,2 +1,11 @@
-<h1>Instagram#landing_page</h1>
-<p>Find me in app/views/instagram/landing_page.html.erb</p>
+<h1><%= link_to 'Profile' , user_profile_path %></h1>
+
+
+<span>
+    <%= link_to 'Add Post' %> | 
+    <%= link_to 'Inbox' %> | 
+    <%= link_to 'Friend' %> |
+    <%= link_to 'Friend Requests' %> |
+    <%= link_to 'Search People' %> |
+    <%= link_to 'Settings' , edit_setting_path(current_user.setting.id) %>
+</span>

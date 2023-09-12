@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_11_145753) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_152249) do
+  create_table "settings", force: :cascade do |t|
+    t.boolean "public", default: false
+    t.boolean "someone_can_comment_on_post", default: true
+    t.boolean "someone_can_search_me", default: true
+    t.boolean "someone_can_mention_me", default: true
+    t.boolean "account_status", default: true
+    t.boolean "show_me_in_suggestions", default: true
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
