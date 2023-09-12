@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_one :setting
-  
+  has_one_attached :profile_photo
+
   after_create do
      Setting.create(user_id: self.id) if self.id.present?
   end      

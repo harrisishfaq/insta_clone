@@ -72,3 +72,9 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+
+gem "rest-client", "~> 2.1"
+
+gem "activestorage", "~> 7.0"
+
+gem "image_processing", "~> 1.12"

@@ -1,7 +1,50 @@
-<h3>Update Profile</h3>
-<%= form_for(current_user , url: update_user_profile_path) do |u| %>
+<h3>Profile</h3>
+
+
+
+<div id="city"> 
+<%= @hello %>
+</div>
+<div id="profile_photo"> 
+<%= render partial: "users/profile_photo" , locals: {user: current_user} %>
+</div>
+<%= form_for(current_user , url: update_user_profile_path , method: :post) do |u| %>
 <p>
-    Email: <%= u.email_field :email %>
+
+    Change Photo: <%= u.file_field :profile_photo %><br> 
+    First Name: <%= u.text_field :first_name %><br>
+    Last Name: <%= u.text_field :last_name %><br>
+    Email: <%= u.email_field :email , :disabled => true%><br>
+    Gender: <%= u.select :gender , ["Male", "Female", "Other"] %><br>
+    Phone: <%= u.text_field :phone_no %><br>
+    Country: <%= u.select :country , @countries_name ,{}, {id: 'selected_country'} %><br>
+    City: <%= u.select :city  , @cities_name %><br>
+
+    <%= u.submit 'Update' %>
+
 </p>
 
 <% end %>
+
+
+<script>
+
+$(document).ready(function(){
+   $("#selected_country").click(function(){
+    var country_name = $(this).val();
+    send_data = {country: country_name}
+
+  $.ajax({
+    type: 'GET',
+    url: '/users/profile',
+    beforeSend: function(xhr) {xhr.setRequestHeader("X-CSRF-Token", $("meta[name='csrf-token']").attr("content"))},
+     data: send_data,
+      success: function(data) {
+      console.log(data)
+     }
+  });
+    e.preventDefault();
+   })
+})
+
+</script>
