@@ -17,6 +17,7 @@
   <body>
 
   <%= (button_to 'Logout', destroy_user_session_path, method: :delete) if user_signed_in? %>
+  <%= turbo_frame_tag :modal %>
     <%= yield %>
   </body>
 </html>

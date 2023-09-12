@@ -7,5 +7,5 @@
     <%= link_to 'Friend' %> |
     <%= link_to 'Friend Requests' %> |
     <%= link_to 'Search People' %> |
-    <%= link_to 'Settings' , edit_setting_path(current_user.setting.id) %>
+    <%= link_to 'Settings' , edit_setting_path(current_user.setting.id) , data: {turbo_frame: "modal"} %>
 </span>
