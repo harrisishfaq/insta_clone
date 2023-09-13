@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Slider</title>
+</head>
+<body>
+
+    <div class="slider-container">
+        <div class="slider-wrapper" id = "updated_card">
+          <%= render partial: 'instagram/card', locals: {suggestion_users: suggestion_users} %>
+          </div>
+    </div>
+
+    <div class="slider-controls">
+        <p onclick="slide('prev')">Previous</p>
+        <p onclick="slide('next')">Next</p>
+    </div>
+</body>
+</html>
+
+
+
+<script>
+
+const sliderWrapper = document.querySelector('.slider-wrapper');
+let currentPosition = 0;
+
+function slide(direction) {
+    const cardWidth = document.querySelector('.card').offsetWidth + 20; // 20px for margin
+    if (direction === 'next' && currentPosition > -(cardWidth * 2)) {
+        currentPosition -= cardWidth;
+    } else if (direction === 'prev' && currentPosition < 0) {
+        currentPosition += cardWidth;
+    }
+    sliderWrapper.style.transform = `translateX(${currentPosition}px)`;
+}
+
+</script>

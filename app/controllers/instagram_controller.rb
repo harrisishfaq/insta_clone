@@ -3,5 +3,6 @@ class InstagramController < ApplicationController
   end
 
   def landing_page
+      suggestion_users()
   end
 end

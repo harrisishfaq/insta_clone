@@ -1,0 +1,14 @@
+<% suggestion_users.each do |u| %>
+    <div class="card">
+    <%= image_tag u.profile_photo, style: "border-radius: 50%; width: 150px; height: 150px;" if u&.profile_photo.present? %>
+    <div class="container">
+            <h4><b><%= u&.full_name %></b></h4> 
+            <% if request_status(u) %>
+               <%= link_to 'Requested' %> 
+            <% else %>
+               <%= button_to 'Add Friend' , friend_request_friend_path(u.id) %> 
+            <% end %>
+        </div>
+    </div>
+<% end %>
+   

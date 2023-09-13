@@ -1,9 +1,4 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
-import "controllers"
 
-
-// Slider Start
 const sliderWrapper = document.querySelector('.slider-wrapper');
 let currentPosition = 0;
 
@@ -16,4 +11,3 @@ function slide(direction) {
     }
     sliderWrapper.style.transform = `translateX(${currentPosition}px)`;
 }
-// Slider End

@@ -1,11 +1,18 @@
-<h1><%= link_to 'Profile' , user_profile_path %></h1>
+
+<h1><%= link_to current_user.email , user_profile_path %></h1>
 
 
 <span>
     <%= link_to 'Add Post' %> | 
     <%= link_to 'Inbox' %> | 
-    <%= link_to 'Friend' %> |
-    <%= link_to 'Friend Requests' %> |
+    <%= link_to 'Friend' , user_friends_friends_path , data: {turbo_frame: "modal"} %> |
+    <%= link_to 'Friend Requests' , pending_requests_friends_path , data: {turbo_frame: "modal"}  %> |
     <%= link_to 'Search People' %> |
     <%= link_to 'Settings' , edit_setting_path(current_user.setting.id) , data: {turbo_frame: "modal"} %>
 </span>
+
+<br><br><br><br>
+<strong>Suggestions-Add Friends</strong>
+<br>
+
+<%= render partial: "instagram/slider", locals: {suggestion_users: @suggestion_users} if @suggestion_users.present?%>

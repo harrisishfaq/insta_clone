@@ -22,5 +22,12 @@ class << self
       end
   end
 
+  def request_sent_by_user(current_user, u)
+     !current_user&.friends.where(request_status: 'approve').pluck(:friend_id).include? u.id
+  end
+
+  def request_recieved_to_user(current_user, u)
+     !u&.friends.where(request_status: 'approve').pluck(:friend_id).include? current_user.id
+  end
 end
 end
