@@ -39,10 +39,32 @@ class FriendsController < ApplicationController
     @user_friends = Friend.get_all_user_friends(current_user)
   end
 
+  def block_or_unfriend
+    Friend.find(params[:id]).update(request_status: set_request_status, friendship_status: params[:action_performable], blocked_by: blocked_by_user)
+  end
+
+  def blocked_users
+    @blocked_users = User.joins(:friends)
+                         .where(friends: {friendship_status: "block", blocked_by: current_user.id})
+                         .pluck("friends.id", "friends.friend_id", "friends.user_id")
+                         .map{|friends_tbl_id, friend_id, user_id| {tbl_id: friends_tbl_id, email: user_id == current_user.id ? User.find(friend_id).email : current_user.email } }
+  end
+
+
+  def unblock_user
+    Friend.find(params[:id]).update(blocked_by: nil, friendship_status: Friend::FRIEND)
+  end
   private
   
   def already_sent_request(user)
     Friend.find_by(user_id: [current_user.id, user.id], friend_id: [user.id, current_user.id], request_status: Friend::PENDING) ? true : false
   end
 
+  def set_request_status
+    params[:action_performable] == Friend::UNFRIEND ? nil : Friend::APPROVE
+  end
+
+  def blocked_by_user
+    params[:action_performable] == Friend::BLOCK ? current_user.id : nil
+  end
 end

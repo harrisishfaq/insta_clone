@@ -1,0 +1,17 @@
+<%= turbo_frame_tag :modal do %>
+    <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; border: 1px solid #000; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 999;">
+    <h1>Blocked Users</h1>
+    <% @blocked_users.each do |user| %>
+        <span style="display: inline-block;">
+         <%= user[:email] %>
+         </span>
+         <span style="display: inline-block;">
+           <%= button_to 'Unblock' , unblock_user_friend_path(user[:tbl_id])  %>
+         </span>
+         <br>
+       <% end %> 
+    </div>
+  
+  <% end %>
+  
+  

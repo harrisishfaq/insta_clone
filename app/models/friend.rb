@@ -14,6 +14,7 @@ class Friend < ApplicationRecord
         User.joins(:friends)
         .where('friends.user_id = ? OR friends.friend_id = ?', current_user.id, current_user.id)
         .where(friends: {request_status: Friend::APPROVE})
+        .where.not(friends: {friendship_status: Friend::BLOCK})     
         .pluck('friends.id', 'friends.friend_id', 'users.email')
         .map {|friend_tbl_id, friend_id, email| {friend_tbl_id: friend_tbl_id, friend_id: friend_id, email: email}}
       end

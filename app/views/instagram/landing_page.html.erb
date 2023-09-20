@@ -7,6 +7,7 @@
     <%= link_to 'Inbox' %> | 
     <%= link_to 'Friend' , user_friends_friends_path , data: {turbo_frame: "modal"} %> |
     <%= link_to 'Friend Requests' , pending_requests_friends_path , data: {turbo_frame: "modal"}  %> |
+    <%= link_to 'Block Users' , blocked_users_friends_path , data: {turbo_frame: "modal"} %> |
     <%= link_to 'Search People' %> |
     <%= link_to 'Settings' , edit_setting_path(current_user.setting.id) , data: {turbo_frame: "modal"} %>
 </span>

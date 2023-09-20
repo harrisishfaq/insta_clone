@@ -15,11 +15,14 @@ Rails.application.routes.draw do
       post :friend_request
       post :approve_request
       post :reject_request
+      post :block_or_unfriend
+      post :unblock_user
     end
 
     collection do
       get :pending_requests
       get :user_friends
+      get :blocked_users
     end
   end
 
