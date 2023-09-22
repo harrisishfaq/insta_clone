@@ -4,5 +4,7 @@ class InstagramController < ApplicationController
 
   def landing_page
       suggestion_users()
+      @posts = Post.all.order(id: :desc)
+      @sum = 0
   end
 end

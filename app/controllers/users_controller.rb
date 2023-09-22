@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   def profile
     @countries_name = ApplicationRecord.get_countries
-    @cities_name =  params[:country].present? ? ApplicationRecord.get_cities(params[:country]) : []
+    @cities_name =  ApplicationRecord.get_cities
 
     respond_to do |format|
-     format.js { @cities_name }
+    #  format.js { @cities_name }
      format.html
     end
   end

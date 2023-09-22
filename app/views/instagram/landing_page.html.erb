@@ -3,7 +3,7 @@
 
 
 <span>
-    <%= link_to 'Add Post' %> | 
+    <%= link_to 'Add Post', new_post_path %> | 
     <%= link_to 'Inbox' %> | 
     <%= link_to 'Friend' , user_friends_friends_path , data: {turbo_frame: "modal"} %> |
     <%= link_to 'Friend Requests' , pending_requests_friends_path , data: {turbo_frame: "modal"}  %> |
@@ -17,3 +17,15 @@
 <br>
 
 <%= render partial: "instagram/slider", locals: {suggestion_users: @suggestion_users} if @suggestion_users.present?%>
+
+<h1>All Posts</h1>
+
+<div>
+  <% @posts.each do |post| %>
+    <h1>Post#: <%= @sum = @sum + 1 %></h1>
+    <%= render "posts/post" , :post => post %>
+    <p>
+      <h3>-----------------------------------------------</h3>
+    </p>
+  <% end %>
+</div>

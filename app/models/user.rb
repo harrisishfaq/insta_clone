@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_one :setting , dependent: :destroy
-  has_one_attached :profile_photo
-  has_many :friends
+  has_one_attached :profile_photo, dependent: :destroy
+  has_many :friends , dependent: :destroy
+  has_many :posts , dependent: :destroy
 
   after_create do
      Setting.create(user_id: self.id) if self.id.present?

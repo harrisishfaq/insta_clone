@@ -16,4 +16,7 @@ function slide(direction) {
     }
     sliderWrapper.style.transform = `translateX(${currentPosition}px)`;
 }
-// Slider End
+// Slider Endimport "trix"
+
+import "trix"
+import "@rails/actiontext"

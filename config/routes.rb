@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   resources :settings
   devise_for :users
   root 'instagram#home_page'
