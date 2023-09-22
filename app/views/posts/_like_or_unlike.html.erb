@@ -1,0 +1,2 @@
+<%= button_to 'Like', like_or_unlike_post_post_path(id: post.id, action_performable: 'like') unless user_like_this_post(post) %>
+<%= button_to 'unlike', like_or_unlike_post_post_path(id: post.id, action_performable: 'unlike') if user_like_this_post(post) %>

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :posts
+  resources :posts do
+    member do
+      post :like_or_unlike_post
+    end
+  end
   resources :settings
   devise_for :users
   root 'instagram#home_page'

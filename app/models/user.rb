@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :friends , dependent: :destroy
   has_many :posts , dependent: :destroy
 
+
+  has_many :user_like_posts , dependent: :destroy
+  has_many :post , through: :user_like_posts
+
   after_create do
      Setting.create(user_id: self.id) if self.id.present?
   end      

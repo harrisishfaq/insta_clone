@@ -1,0 +1,22 @@
+<div id="<%= dom_id post %>">
+<strong>Post by: <%= post_user(post) %> </strong>
+<p>
+    <strong>Attachments:</strong>
+    <%= render "posts/post_images" , :images => post.post_images if post.post_images.present? %>
+  </p>
+<p>
+    <strong>Title:</strong>
+    <%= post.title %>
+  </p>
+
+  <p>
+    <strong>Content:</strong>
+    <%= post.content %>
+  </p>
+
+</div>
+
+<h3>Total likes: <%= total_likes(post) %></h3>
+
+<%= render partial: "posts/like_or_unlike" , locals: {post: post} %>
+
