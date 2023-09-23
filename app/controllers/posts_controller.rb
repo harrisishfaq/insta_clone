@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :current_post, only: %i[like_or_unlike_post]
 
   # GET /posts or /posts.json
   def index
@@ -62,10 +61,10 @@ class PostsController < ApplicationController
 
   def like_or_unlike_post
       if params[:action_performable] == 'like'
-         save_like = current_post.user_like_posts.build(user_id: current_user.id)
+         save_like = current_user.user_like_posts.build(post_id: params[:id])
          redirect_to instagram_landing_page_path if save_like.save!
       else
-        delete_like = current_post.user_like_posts.where(user_id: current_user.id)
+        delete_like = current_user.user_like_posts.where(post_id: params[:id])
         redirect_to instagram_landing_page_path if delete_like.delete_all
       end
   end
@@ -77,7 +76,7 @@ class PostsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def current_post
-      Post.find(params[:id])
+    def post_params
+      params.require(:post).permit!
     end
 end
