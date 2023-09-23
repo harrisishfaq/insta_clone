@@ -15,4 +15,8 @@ module InstagramHelper
     def total_likes(post)
       post.user_like_posts.count
     end
+
+    def total_suggestion(post)
+        post.suggestions.count
+    end
 end

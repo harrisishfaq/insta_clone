@@ -8,6 +8,13 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+  @suggestions = User.includes(:suggestions)
+                     .where(suggestions: {suggestionable_id: params[:id]})
+                     .includes(:posts)
+                     .pluck("suggestions.content", "users.email")
+                     .map{|suggestion_content, user_email| {suggestion_content: suggestion_content, user_email: user_email}}
+
+  @suggestions.uniq!
   end
 
   # GET /posts/new

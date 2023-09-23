@@ -3,7 +3,7 @@
 
 
 <span>
-    <%= link_to 'Add Post', new_post_path %> | 
+    <%= link_to 'Add Post', new_post_path, data: {turbo_frame: "modal"} %> | 
     <%= link_to 'Inbox' %> | 
     <%= link_to 'Friend' , user_friends_friends_path , data: {turbo_frame: "modal"} %> |
     <%= link_to 'Friend Requests' , pending_requests_friends_path , data: {turbo_frame: "modal"}  %> |

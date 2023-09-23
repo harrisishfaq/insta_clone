@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post 'users/update_profile' , as: :update_user_profile
   
   # post 'friends/friend_request' , as: :friend_request
-
+  
   resources :friends do
     member do
       post :friend_request
@@ -23,14 +23,16 @@ Rails.application.routes.draw do
       post :block_or_unfriend
       post :unblock_user
     end
-
+    
     collection do
       get :pending_requests
       get :user_friends
       get :blocked_users
     end
   end
-
+  
+  
+  post 'suggestion/create_suggestion'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

@@ -19,6 +19,7 @@
   <div id="flash"> </div>
   <div id="notice"> </div>
   <%= turbo_frame_tag :modal %>
-    <%= yield %>
+    <%= yield if is_account_activated? %>
+    <%= render partial: "layouts/deactivate" unless is_account_activated? %>
   </body>
 </html>

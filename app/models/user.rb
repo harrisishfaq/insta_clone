@@ -8,8 +8,9 @@ class User < ApplicationRecord
   has_one_attached :profile_photo, dependent: :destroy
   has_many :friends , dependent: :destroy
   has_many :posts , dependent: :destroy
+  has_many :suggestions , dependent: :destroy
 
-
+# many to many for post likes
   has_many :user_like_posts , dependent: :destroy
   has_many :post , through: :user_like_posts
 

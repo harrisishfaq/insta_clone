@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_22_225415) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_23_113359) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -77,6 +77,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_22_225415) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "suggestions", force: :cascade do |t|
+    t.text "content"
+    t.string "suggestionable_type", null: false
+    t.integer "suggestionable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["suggestionable_type", "suggestionable_id"], name: "index_suggestions_on_suggestionable"
   end
 
   create_table "user_like_posts", force: :cascade do |t|

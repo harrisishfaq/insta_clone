@@ -6,4 +6,6 @@ class Post < ApplicationRecord
 
     has_many :user_like_posts , dependent: :destroy
     has_many :users , through: :user_like_posts
+
+    has_many :suggestions , as: :suggestionable
 end

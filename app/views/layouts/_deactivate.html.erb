@@ -1,0 +1,3 @@
+
+<%= message if user_signed_in? %>
+<%= link_to 'Settings' , edit_setting_path(current_user.setting.id) , data: {turbo_frame: "modal"} if user_signed_in? %>

@@ -16,7 +16,8 @@
 
 </div>
 
-<h3>Total likes: <%= total_likes(post) %></h3>
+<h3>Total likes: <%= total_likes(post) %> | Total comments: <%= total_suggestion(post) %></h3>
 
 <%= render partial: "posts/like_or_unlike" , locals: {post: post} %>
 
+<%= link_to 'Show this post' , post_path(post) %>

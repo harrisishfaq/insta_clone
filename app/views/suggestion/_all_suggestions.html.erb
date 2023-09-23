@@ -1,0 +1,9 @@
+<h3>All Suggestions </h3>
+
+<% suggestions.each do |s| %>
+<ul>
+<li>
+  <strong>Suggestion:</strong> <%= s[:suggestion_content]%> <br><i>By <%= s[:user_email] %> </i> 
+</li>
+</ul>
+  <% end %>

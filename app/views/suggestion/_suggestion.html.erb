@@ -1,0 +1,7 @@
+<%= form_for(Suggestion.new, url: suggestion_create_suggestion_path(@post)) do |s| %>
+    Suggest: <%= s.text_field  :content %>
+    <%= s.hidden_field :suggestionable_id , :value => @post.id %> 
+    <%= s.hidden_field :suggestionable_type , :value => 'Post' %> 
+    <%= s.hidden_field :user_id , :value => current_user.id %> 
+    <%= s.submit 'Submit' %>
+  <% end %> 
