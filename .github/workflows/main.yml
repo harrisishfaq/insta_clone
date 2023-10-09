@@ -1,6 +1,9 @@
-name: CI/CD
-on:
-  push:
-    branches:
-      - main
-  
+name: learn-github-actions
+
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: rails -v
