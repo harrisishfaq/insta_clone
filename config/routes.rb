@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :b1s
   resources :books
   resources :posts do
     member do
