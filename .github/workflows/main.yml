@@ -1,9 +1,13 @@
-name: learn-github-actions
+ame: learn-github-actions
 
-on: [push]
+on:
+ push:
+    branches:
+      - stag
+      - main
+      - development
 jobs:
   check-bats-version:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - run: rails -v
