@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :b2s
   resources :posts do
     member do
       post :like_or_unlike_post
